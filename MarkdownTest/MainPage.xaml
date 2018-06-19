@@ -5,10 +5,27 @@
     xmlns:local="using:MarkdownTest"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Tapped="LoadElements">Load</Button>
+            <Button Tapped="ClearElements">Clear</Button>
+        </StackPanel>
+        <ListView Grid.Row="1" x:Name="listView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <controls:MarkdownTextBlock Text="{Binding SampleText}"></controls:MarkdownTextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
